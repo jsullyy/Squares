@@ -22,6 +22,14 @@ function addSquare(){
     square.style.backgroundColor = getRandomColor();
 
     // I can put a onclick and a function(this)
+    square.onclick = function(){
+        if(parseInt(square.style.zIndex) == zIndexCounter){
+            square.remove();
+        }else{
+            zIndexCounter++;
+            square.style.zIndex = zIndexCounter;
+        }
+    };
 
     //put it on the screen
     squareArea.append(square);
@@ -47,4 +55,7 @@ function getRandomColor(){
 function changeColors(){
     let allSquares = document.querySelectorAll(".square");
 
+    for(let i = 0;i < allSquares.length;i++){
+        allSquares[i].style.backgroundColor = getRandomColor();
+    }
 }
