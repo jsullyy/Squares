@@ -2,14 +2,27 @@ let squareArea = document.querySelector("#squarearea");
 // let squareArea = document.getElementById("squarearea")
 let squareCount = parseInt(Math.random()*21)+30; // 30-50
 //Make some variable for a really big zIndex
+let zIndexCounter = 1;
+
 for(let i = 0;i<squareCount;i++){
+    addSquare();
+}
+
+function addSquare(){
     //make a square
     let square = document.createElement("div");
     square.className = "square";
-    square.style.left = parseInt(Math.random()*650)+"px";
-    square.style.top = parseInt(Math.random()*250)+"px";
+
+    let size = parseInt(Math.random()*11)+45;
+    square.style.width = size + "px";
+    square.style.height = size + "px";
+
+    square.style.left = parseInt(Math.random()*(squareArea.clientWidth - size))+"px";
+    square.style.top = parseInt(Math.random()*(squareArea.clientHeight - size))+"px";
     square.style.backgroundColor = getRandomColor();
+
     // I can put a onclick and a function(this)
+
     //put it on the screen
     squareArea.append(square);
 }
